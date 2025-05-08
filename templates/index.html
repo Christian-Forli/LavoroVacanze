@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collezione Pokémon</title>
+</head>
+
+<body>
+    <!-- Titolo principale della pagina -->
+    <h1>Benvenuto nel Gioco Pokémon</h1>
+    <!-- Istruzioni per l'utente -->
+    <p>Seleziona un'opzione:</p>
+    <ul>
+        <!-- Link per aprire un pacchetto di carte (costa 10 punti) -->
+        <li><a href="{{ url_for('apri_pacchetto') }}">Apri pacchetto (10 punti)</a></li>
+        <!-- Link per mostrare la collezione di carte trovate -->
+        <li><a href="{{ url_for('mostra_intera_collezione') }}">Mostra collezione</a></li>
+        <!-- Link per mostrare i punti totali disponibili -->
+        <li><a href="{{ url_for('mostra_punti') }}">Mostra punti totali</a></li>
+    </ul>
+    <!-- Se c'è un messaggio da mostrare (output), lo visualizza -->
+    {% if output %}
+        <p>{{ output }}</p>
+        <!-- Se ci sono carte da mostrare (pacchetto o collezione), le elenca -->
+        {% if pacchetto %}
+        <ul>
+            {% for carta in pacchetto %}
+            <!-- Ogni carta viene mostrata come elemento della lista -->
+            <li>{{ carta }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endif %}
+</body>
+
+</html>
